@@ -57,11 +57,15 @@ def generate_content(attendance:dict) -> dict:
             ],
         }
 
+    content = []
     for key, value in attendance.items():
-        return {
-            "type": "RichTextBlock",
-            "inlines": [{"type": "TextRun", "text": f"{key}:    {value}"}],
-        }
+        content.append(
+            {
+                "type": "RichTextBlock",
+                "inlines": [{"type": "TextRun", "text": f"{key}:    {value}"}],
+            }
+        )
+    return content
 
 
 # Define an async function to send the message
