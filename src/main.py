@@ -65,7 +65,7 @@ if not content:
     exit()
 
 body_elements.append(heading)
-body_elements.append(content)
+body_elements.extend(content)
 
 adaptive_card["attachments"][0]["content"]["body"] = body_elements
 
