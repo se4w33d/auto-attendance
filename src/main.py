@@ -3,7 +3,7 @@ import json
 import asyncio
 from playwright.sync_api import sync_playwright
 from dotenv import load_dotenv, dotenv_values
-from utility import generate_heading, generate_content, send_telegram_message
+from utility import generate_heading, generate_content, send_telegram_message, get_current_day
 from play import run
 
 # Load environment variables from .env
@@ -65,7 +65,10 @@ if not content:
     exit()
 
 body_elements.append(heading)
-body_elements.extend(content)
+if get_current_day() == "Mon":
+    body_elements.append(content)
+else:
+    body_elements.extend(content)
 
 adaptive_card["attachments"][0]["content"]["body"] = body_elements
 
